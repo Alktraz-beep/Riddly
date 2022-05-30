@@ -6,7 +6,7 @@ Computo Móvil Grupo 1 Profesor German Santos Jaimes
 #
 Integrantes:
 - Bustamante Valdéz Jessica Dayana
-- Diaz García Profirio
+- Diaz García Porfirio
 - Ramírez Viramontes Josue Yafte
 
 ![image](https://user-images.githubusercontent.com/42252723/171042613-6d59347d-cd6b-45db-8d5c-adcf95e9abcc.png)
