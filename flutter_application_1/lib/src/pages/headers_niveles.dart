@@ -1,21 +1,39 @@
-import 'dart:ffi';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class HeadersNivel extends StatefulWidget {
-  const HeadersNivel({Key? key}) : super(key: key);
+  final String cipherText;
+  final String clearText;
+  final String clueText;
+  final int level;
+  const HeadersNivel(
+      {Key? key,
+      required this.cipherText,
+      required this.clearText,
+      required this.clueText,
+      required this.level})
+      : super(key: key);
   @override
-  _nivel1 createState() => _nivel1();
+  _nivel createState() => _nivel(
+      cipherText: this.cipherText,
+      clearText: this.clearText,
+      clueText: this.clueText,
+      level: this.level);
 }
 
-class _nivel1 extends State<HeadersNivel> {
+class _nivel extends State<HeadersNivel> {
+  final String cipherText;
+  final String clearText;
+  final String clueText;
+  final int level;
+  _nivel(
+      {required this.cipherText,
+      required this.clearText,
+      required this.clueText,
+      required this.level});
   Color _color_cifrado = Color(0xFF03A062);
   Color _color_shadow_cifrado = Color(0xFF03A062);
   Color _color_letras_cifrado = Color(0xFF03A062);
   TextEditingController _control_respuesta = TextEditingController();
-  String _cipher_text = "sp21s 0r1 th1 10rs 0nd 1y1s 3f pr2nc1s";
-  String _clear_text = "spies are the ears and eyes of princes";
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +64,11 @@ class _nivel1 extends State<HeadersNivel> {
                                 height: 50,
                                 child: InkWell(
                                   onTap: () {
-                                    print("ACCION DE BOTON AYUDA");
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return crearDialogPista();
+                                        }); //para accion de lupa
                                   },
                                 ),
                               ),
@@ -91,7 +113,7 @@ class _nivel1 extends State<HeadersNivel> {
                       color: _color_cifrado,
                       child: FittedBox(
                         child: Text(
-                          _cipher_text,
+                          cipherText,
                           style: TextStyle(
                             color: _color_letras_cifrado,
                             fontWeight: FontWeight.bold,
@@ -139,8 +161,7 @@ class _nivel1 extends State<HeadersNivel> {
                           width: MediaQuery.of(context).size.width * .5,
                           child: TextButton(
                             onPressed: () {
-                              if (_control_respuesta.value.text ==
-                                  _clear_text) {
+                              if (_control_respuesta.value.text == clearText) {
                                 //MENSAJE DE FELICITACION
                                 showDialog(
                                     context: context,
@@ -172,31 +193,48 @@ class _nivel1 extends State<HeadersNivel> {
     ));
   }
 
+  //DIALOG CUANDO FALLA
   AlertDialog crearDialogFallido() {
     return AlertDialog(
-      title: Text("TITTLE"),
-      content: Text("MUY CERCA -X puntos"),
+      title: Text("Keep trying :("),
+      content: Text("¡You can!"),
       actions: [
         TextButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            child: Text("continue")),
-        TextButton(onPressed: () {}, child: Text("give up"))
+            child: Text("Continue")),
       ],
     );
   }
 
+  //DIALOG CUANDO ACIERTA
   AlertDialog crearDialogCongrats() {
     return AlertDialog(
-      title: Text("TITTLE"),
-      content: Text("Felicitacion"),
+      title: Text("¡Congratulations!"),
+      content: Text("You are a super detective."),
       actions: [
         TextButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            child: Text("next")),
+            child: Text("Continue")),
+      ],
+    );
+  }
+
+  //DIALOG CUANDO PIDE PISTA
+
+  AlertDialog crearDialogPista() {
+    return AlertDialog(
+      title: Text("Clue..."),
+      content: Text(clueText),
+      actions: [
+        TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text("ok")),
       ],
     );
   }
@@ -247,7 +285,7 @@ class _nivel1 extends State<HeadersNivel> {
                           flex: 5,
                           child: Container(
                             alignment: Alignment.center,
-                            child: Text("Riddly 1",
+                            child: Text("Riddly " + level.toString(),
                                 style: TextStyle(
                                     fontSize: 38,
                                     color: Colors.white,

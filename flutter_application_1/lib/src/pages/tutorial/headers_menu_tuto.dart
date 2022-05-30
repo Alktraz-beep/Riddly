@@ -1,16 +1,17 @@
 //esta clase contiene el menu princi
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/pages/arrow_animation.dart';
 import 'package:flutter_application_1/src/pages/headers_niveles.dart';
 
-class HeaderMenu extends StatefulWidget {
-  HeaderMenu({Key? key}) : super(key: key);
+class HeaderMenuTuto extends StatefulWidget {
+  HeaderMenuTuto({Key? key}) : super(key: key);
 
   @override
-  State<HeaderMenu> createState() => _Header_Menu();
+  State<HeaderMenuTuto> createState() => _Header_MenuTuto();
 }
 
-class _Header_Menu extends State<HeaderMenu> {
+class _Header_MenuTuto extends State<HeaderMenuTuto> {
   Color _color_easteregg = Color(0xFF8E1FFF);
   @override
   Widget build(BuildContext context) {
@@ -60,31 +61,35 @@ class _Header_Menu extends State<HeaderMenu> {
                               blurRadius: 2.0,
                               color: Colors.purple.shade900)
                         ]),
-                    child: TextButton(
-                      child: Text(
-                        "RIDDLE 1",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontFamily: 'Miltown',
-                            shadows: [
-                              Shadow(
-                                  offset: Offset(2.0, 1.0), color: Colors.green)
-                            ]),
+                    child: SizedBox(
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Positioned(
+                              left: MediaQuery.of(context).size.width - 180,
+                              child: ArrowAnimaton()),
+                          TextButton(
+                            child: Text(
+                              "RIDDLE 1",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 25,
+                                  fontFamily: 'Miltown',
+                                  shadows: [
+                                    Shadow(
+                                        offset: Offset(2.0, 1.0),
+                                        color: Colors.green)
+                                  ]),
+                            ),
+                            onPressed: () {
+                              /*Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HeadersNivel()));*/
+                            },
+                          ),
+                        ],
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HeadersNivel(
-                                      clearText:
-                                          'spies are the ears and eyes of princes',
-                                      cipherText:
-                                          'sp21s 0r1 th1 10rs 0nd 1y1s 3f pr2nc1s',
-                                      clueText: 'The sentence contains 7 e\'s',
-                                      level: 1,
-                                    )));
-                      },
                     ),
                   ),
                 ),
@@ -114,20 +119,7 @@ class _Header_Menu extends State<HeaderMenu> {
                                   offset: Offset(2.0, 1.0), color: Colors.green)
                             ]),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HeadersNivel(
-                                      clearText:
-                                          'a pint of sweat saves a gallon of blood',
-                                      cipherText:
-                                          '9 p5nt 3f sw79t s9v7s 9 g9ll3n 3f bl77d',
-                                      clueText:
-                                          'the letter \'u\' is the younger brother and the letter \'a\' is the older',
-                                      level: 2,
-                                    )));
-                      },
+                      onPressed: () {},
                     ),
                   ),
                 ),
@@ -157,19 +149,7 @@ class _Header_Menu extends State<HeaderMenu> {
                                   offset: Offset(2.0, 1.0), color: Colors.green)
                             ]),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HeadersNivel(
-                                      clearText:
-                                          'make each day you masterpiece',
-                                      cipherText:
-                                          'm3k4 43ch d3y y67 m3st4rp54c4',
-                                      clueText: 'the order is in: \'mAlEfIcO\'',
-                                      level: 3,
-                                    )));
-                      },
+                      onPressed: () {},
                     ),
                   ),
                 ),
@@ -199,19 +179,7 @@ class _Header_Menu extends State<HeaderMenu> {
                                   offset: Offset(2.0, 1.0), color: Colors.green)
                             ]),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HeadersNivel(
-                                      clearText:
-                                          'it is amazing what you can do when you try',
-                                      cipherText:
-                                          '4t 4s 8m8z4ng wh8t y20 c8n d2 wh6n y20 try',
-                                      clueText: 'You can if you try',
-                                      level: 4,
-                                    )));
-                      },
+                      onPressed: () {},
                     ),
                   ),
                 ),
@@ -241,20 +209,7 @@ class _Header_Menu extends State<HeaderMenu> {
                                   offset: Offset(2.0, 1.0), color: Colors.green)
                             ]),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HeadersNivel(
-                                      clearText:
-                                          'in war there is no substitute for victory',
-                                      cipherText:
-                                          '?n w#r t@r@ ?s n% s*bst?t*t@ f%r v?ct%ry',
-                                      clueText:
-                                          'the question mark is \'i\'  and hashtag by \'a\'',
-                                      level: 5,
-                                    )));
-                      },
+                      onPressed: () {},
                     ),
                   ),
                 ),
@@ -293,36 +248,17 @@ class _Header_Menu extends State<HeaderMenu> {
               flex: 3,
               child: Container(
                 alignment: Alignment.center,
-                child: TextButton(
-                  child: Text("Riddly",
-                      style: TextStyle(
-                          fontSize: 38,
-                          color: Colors.white,
-                          fontFamily: 'Miltown2',
-                          shadows: [
-                            Shadow(
-                                offset: Offset(3.0, 3.0),
-                                color: Colors.green.shade500)
-                          ])),
-                  onPressed: () {
-                    setState(() {
-                      _color_easteregg = Colors.white;
-                    });
-                  },
-                ),
+                child: Text("Riddly",
+                    style: TextStyle(
+                        fontSize: 38,
+                        color: Colors.white,
+                        fontFamily: 'Miltown2',
+                        shadows: [
+                          Shadow(
+                              offset: Offset(3.0, 3.0),
+                              color: Colors.green.shade500)
+                        ])),
               )),
-          Expanded(
-              flex: 1,
-              child: Container(
-                alignment: Alignment.center,
-                child: Text(
-                  "1534689463",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Miltown2',
-                      color: _color_easteregg),
-                ),
-              ))
         ],
       ),
     );
