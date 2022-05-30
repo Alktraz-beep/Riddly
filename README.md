@@ -1,8 +1,10 @@
 # Riddly
 Proyecto Final 
-Computo Móvil
+Computo Móvil Grupo 1 Profesor German Santos Jaimes
 
-- -Integrantes:
+
+#
+Integrantes:
 - Bustamante Valdéz Jessica Dayana
 - Diaz García Profirio
 - Ramírez Viramontes Josue Yafte
